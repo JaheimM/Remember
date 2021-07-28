@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Game</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous" />
+    <script src="https://kit.fontawesome.com/3f6b557f75.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="style.css" />
+
+</head>
+
+<body>
+
+    <div class="preloader">
+        <div>
+            <h1>Game is Loading...</h1>
+        </div>
+    </div>
+    <div id="start-menu">
+        <div>
+            <h2>Click to Start Game</h2>
+        </div>
+    </div>
+    <div id="all-content">
+        <header>
+            <audio controls id="audio">
+                <source src="Music/UnderwaterSpaceLo PE1081005.mp3" type="audio/mpeg" />
+                Browser not Supported
+            </audio>
+            <div class="container">
+                <nav>
+                    <ul>
+                        <li><button id="history">History</button></li>
+                        <li><button id="help">Help</button></li>
+                        <i class="fas fa-volume-mute fa-3x" id="mute"></i>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+        <main id="main">
+            <div class="wrapper">
+                <div class="container-2">
+
+                    <!-- Jesper Hills 3D carousel https://codepen.io/nopr/pen/rfBJx -->
+                    <div class="carousel">
+                        <div class="item a" id="memory-love"><img src="Images/dark-blurred image.jpg" id="option-1"
+                                alt=""></div>
+                        <div class="item b">B</div>
+                        <div class="item c">C</div>
+                        <div class="item d">D</div>
+                        <div class="item e">E</div>
+                        <div class="item f">F</div>
+                    </div>
+                    <div class="next">Next</div>
+                    <div class="prev">Prev</div>
+
+                </div>
+                <div class="love">
+                    <!--Note add blurred image to represent memory's lost and add sound on click-->
+                    <img src="Images/would you like me to 3.png" alt="Image of her with girl" />
+                    <img src="Images/image of her with girl 2.png" alt="">
+                    <img src="Images/love 2.png" alt="">
+                </div>
+                <div><img src="" alt="Image of her with friends" /></div>
+                <div><img src="" alt="Image of her by himself" /></div>
+            </div>
+            <div class="content" id="content">
+                <!--Empty paragraph for toggling dialogue in game.js-->
+                <p id="dialogue">...</p>
+                <!--Button to toggle for next dialogue-->
+                <button id="next-button">Next</button>
+              </div>
+                <div class="answer">
+                    <p>What am I?</p>
+                    <button id="btn1">Answer</button>
+                </div>
+        </main>
+    </div>
+    <div class="content2" id="content2">
+        <!--Empty paragraph for toggling dialogue in game.js-->
+        <p id="dialogue2">...</p>
+    </div>
+    <footer class="footer"></footer>
+    </div>
+    <div class="solve-screen" id="solve-screen">
+
+        <div>
+            <Button id="back-btn">Back</Button>
+            <button id="toggle">Show background</button>
+        </div>
+
+        <form action="" id="form">
+            <input type="text" id="answer" autocomplete="off"><br>
+            <input type="submit" id="submit" value="Remember">
+        </form>
+
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
+    </script>
+    <script src="app.js"></script>
+</body>
+
+</html>
