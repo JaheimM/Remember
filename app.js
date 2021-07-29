@@ -248,6 +248,7 @@ document.addEventListener("DOMContentLoaded", function () {
     audio.four.muted = true;
     $("#solve-screen").hide();
     $(allContent).show();
+    $(contentTwo).hide();
     if (isMute == true) {
       audio.three.muted = true;
     } else {
@@ -293,6 +294,5 @@ document.addEventListener("DOMContentLoaded", function () {
   $(love).click(function () {
     $(allContent).hide();
     $(contentTwo).show();
-    audio.three.muted = true;
   });
 });
