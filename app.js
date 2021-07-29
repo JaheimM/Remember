@@ -115,7 +115,7 @@ document.addEventListener("DOMContentLoaded", function () {
       "I feel like I'm drowning most of the time.",
       "That reminds me what is my name?",
       "Right, how could I forget?",
-      userName,
+      `It's ${userName}.`,
       "Why is her face so blurry?",
       "I don't know you so why are you calling my name?",
     ],
@@ -154,8 +154,12 @@ document.addEventListener("DOMContentLoaded", function () {
       "With a chuckle she runs a finger down my jaw. It's a good thing she can't see how red my face is.",
       "On another note You're very cute...",
       "Huh?",
-      "For a man.",
-    ],
+        "For a man.",
+        "Click to return",
+      ""
+      ],
+      images: [
+    ]
   };
 
   // Event listener for if the next button for dialogue is clicked
@@ -178,6 +182,11 @@ document.addEventListener("DOMContentLoaded", function () {
   function clickedTwo() {
       clicks++;
       $(dialogueTwo).html(object.myDialogueTwo[clicks]);
+
+      if ($(dialogueTwo).html() == object.myDialogueTwo[35]) {
+          $(allContent).show();
+          $(contentTwo).hide();
+      }
   }
 
   // if statement for when prompt is canceled(null) or user presses 'OK' without entering a name,
@@ -189,7 +198,7 @@ document.addEventListener("DOMContentLoaded", function () {
     object.myDialogue[index] = "Wait I do have one. Ike that's my name.";
   }
 
-  console.log(object.myDialogue);
+  console.log(object.myDialogueTwo);
 
   //jquery
   // carousel functionality
@@ -284,5 +293,6 @@ document.addEventListener("DOMContentLoaded", function () {
   $(love).click(function () {
     $(allContent).hide();
     $(contentTwo).show();
+    audio.three.muted = true;
   });
 });
