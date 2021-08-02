@@ -167,6 +167,10 @@ button {
     display: block;
 }
 
+.bg {
+    min-height: 100vh;
+    max-width: 100%;
+}
 @keyframes up-down {
     from {
         transform: translateY(-10px);

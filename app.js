@@ -4,6 +4,10 @@ document.addEventListener("DOMContentLoaded", function () {
     preloader.classList.add("off");
   });
 
+  const background = document.getElementById("bg");
+
+  $(background).hide()
+
   const allContent = document.getElementById("all-content");
 
   const audio = {
@@ -13,6 +17,10 @@ document.addEventListener("DOMContentLoaded", function () {
     four: new Audio("Music/mixkit-human-single-heart-beat-490.wav"),
     five: new Audio("Music/Voice lines (answer correct).mp3"),
   };
+
+  const images = {
+    one: new Image("Images/image of her with girl 2.png")
+  } 
 
   //Variables from different elements on document
   const startMenu = document.getElementById("start-menu");
@@ -38,10 +46,14 @@ document.addEventListener("DOMContentLoaded", function () {
     if (audio.three.muted === false) {
       audio.three.muted = true;
     } else if (audio.three.muted === true) {
+      isMute = false;
       audio.three.muted = false;
     }
     mute.classList.toggle("change");
+
+  console.log(isMute)
   });
+
 
   optionOne.onmouseover = function () {
     audio.two.play();
@@ -180,13 +192,19 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   function clickedTwo() {
-      clicks++;
+    clicks++;
+    $(background).show();
       $(dialogueTwo).html(object.myDialogueTwo[clicks]);
 
       if ($(dialogueTwo).html() == object.myDialogueTwo[35]) {
           $(allContent).show();
-          $(contentTwo).hide();
-      }
+        $(contentTwo).hide();
+        $(background).hide();
+    }
+    
+    if ($(dialogueTwo).html() == object.myDialogueTwo[0]) {
+      $(background).appendChild(images.one)
+    }
   }
 
   // if statement for when prompt is canceled(null) or user presses 'OK' without entering a name,
