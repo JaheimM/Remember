@@ -10,6 +10,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
   const allContent = document.getElementById("all-content");
 
+  const images = {
+    first: "Images/love 2.png",
+  }
+  
   const audio = {
     one: new Audio("Music/UnderwaterBubbleBy PE311303.mp3"),
     two: new Audio("Music/Muffled Rain 2.mp3"),
@@ -17,10 +21,6 @@ document.addEventListener("DOMContentLoaded", function () {
     four: new Audio("Music/mixkit-human-single-heart-beat-490.wav"),
     five: new Audio("Music/Voice lines (answer correct).mp3"),
   };
-
-  const images = {
-    one: new Image("Images/image of her with girl 2.png")
-  } 
 
   //Variables from different elements on document
   const startMenu = document.getElementById("start-menu");
@@ -50,8 +50,6 @@ document.addEventListener("DOMContentLoaded", function () {
       audio.three.muted = false;
     }
     mute.classList.toggle("change");
-
-  console.log(isMute)
   });
 
 
@@ -202,9 +200,9 @@ document.addEventListener("DOMContentLoaded", function () {
         $(background).hide();
     }
     
-    if ($(dialogueTwo).html() == object.myDialogueTwo[0]) {
-      $(background).appendChild(images.one)
-    }
+    if ($(dialogueTwo).html() == object.myDialogueTwo[3]) {
+    $('#bg').css('background-image', 'url("' + images.first +'")')  }
+  
   }
 
   // if statement for when prompt is canceled(null) or user presses 'OK' without entering a name,

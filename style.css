@@ -170,6 +170,11 @@ button {
 .bg {
     min-height: 100vh;
     max-width: 100%;
+    background-image: url(/Images/image\ of\ her\ with\ girl\ 2.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
 }
 @keyframes up-down {
     from {
