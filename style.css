@@ -38,7 +38,7 @@ li {
 
 body {
     background: rgb(51, 51, 51);
-    height: 100%;  
+    min-height: 100vh;  
     /* hides scrollbar but keeps functionality*/
     /* hides scrollbar for IE, Edge, and Firefox*/
     -ms-overflow-style: none;
@@ -57,11 +57,22 @@ main {
     display: none;
 }
 
-nav ul, li {
+nav ul li {
     display: flex;
     justify-content: center;
     margin: 5px;
     padding: 3px;
+}
+
+.container button {
+    display: flex;
+    justify-content: center;
+    min-width: 20px;
+    width: 100px;
+    height: 50px;
+    border-radius: 10px;
+    font-size: 24px;
+    text-align: center;
 }
 
 .wrapper div {
@@ -167,6 +178,15 @@ button {
     display: block;
 }
 
+.bg {
+    min-height: 100vh;
+    max-width: 100%;
+    background-image: url(/Images/image\ of\ her\ with\ girl\ 2.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+}
 @keyframes up-down {
     from {
         transform: translateY(-10px);
@@ -320,6 +340,60 @@ button {
     font-size: 24px;
 }
 
+#instructions-screen {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-self: center;
+    text-align: center;
+    position: absolute;
+    min-height: 100vh;
+    color: white;
+   /*  background: rgba(0, 0, 0, 0.8) !important; */
+   background: black;
+    z-index: 3;
+    
+}
+
+.first {
+    animation: fade-down 1.5s ease-in-out;
+}
+
+#instructions-screen ul {
+opacity: 0;
+animation: fade-down 1.5s ease-in-out forwards;
+animation-delay: 1.5s;
+font-size: 24px;
+}
+
+
+
+
+@keyframes fade-down {
+    	from {
+    	    opacity: 0;
+    	    transform: translate3d(0, -20%, 0);
+    	}
+
+    	to {
+    	    opacity: 1;
+    	    transform: translate3d(0, 0, 0);
+    	}
+}
+
+
+#instructions-screen div {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
 #submit {
     display: none;
+}
+
+#btn1 {
+    margin-top: 450px;
+    margin-inline: 45%;
+    text-align: center;
 }
