@@ -11,7 +11,11 @@ document.addEventListener("DOMContentLoaded", function () {
   const allContent = document.getElementById("all-content");
 
   const images = {
-    first: "Images/love 2.png",
+    set: [
+      "Images/What are you doing out here.png",
+    "Images/brooding perhaps.png",
+      // remove from images folder later "Images/I'm not one for the politicking.clip"
+    ]
   }
   
   const audio = {
@@ -20,6 +24,7 @@ document.addEventListener("DOMContentLoaded", function () {
     three: new Audio("Music/UnderwaterSpaceLo loop.mp3"),
     four: new Audio("Music/mixkit-human-single-heart-beat-490.wav"),
     five: new Audio("Music/Voice lines (answer correct).mp3"),
+    six: new Audio("Music/confirm_style_2_echo_001.mp3")
   };
 
   //Variables from different elements on document
@@ -34,9 +39,28 @@ document.addEventListener("DOMContentLoaded", function () {
   const love = document.getElementById("memory-love");
   const contentTwo = document.getElementById("content2");
   const content = document.getElementById("content");
+  const instructions = document.getElementById("instructions-screen");
+  const close = document.getElementById("close")
 
-  help.addEventListener("click", () => {
-    help.classList.toggle("");
+  let instructionsOnScreen = true;
+
+ $(close).click(() => {
+    $(instructions).hide()
+   instructionsOnScreen = false;
+   console.log(instructionsOnScreen)
+ })
+  
+  if (instructionsOnScreen == true) {
+    $(backBtn).hide()
+  } else {
+    $(backBtn).show()
+  }
+
+ 
+ 
+
+  $(help).click(() => {
+    $(instructions).show()
   });
 
   //Adding functionality to mute button
@@ -115,19 +139,26 @@ document.addEventListener("DOMContentLoaded", function () {
   // Optional user input for name
   const name = window.prompt("Your name is: ");
 
-  let userName = "It's" + " " + name + ".";
+  let userName = name + ".";
 
   // Array that has values for dialogues on each user click
   const object = {
     myDialogue: [
       "When I dream I see the faces of people I don't remember.",
       "I feel a sudden sense of nostalgia I can't place. Making me feel guilty.",
-      "I feel like I'm drowning most of the time.",
+      "What is it that you want from me?",
+      "Everytime I sleep...they come to me like ghost.",
+      "Maybe I'm just going mad.",
+      "Maybe these people never existed in the first place and they were born of my loneliness?",
       "That reminds me what is my name?",
       "Right, how could I forget?",
       `It's ${userName}.`,
-      "Why is her face so blurry?",
-      "I don't know you so why are you calling my name?",
+      "These people I don't recognize they always call out that name.",
+      "Why can't I remember you?",
+      "Any of you?",
+      "...",
+      "A local told me of a cave filled with a body of water. A nomad who lost his memories traveled there and drowned. The people thought he was dead but there the man was perfectly fine. 'I remember.' he said. Then he told them his true name, 'Lethe.'",
+      "I'm desperate for answers. If I first have to die to remember then so be it."
     ],
 
     myDialogueTwo: [
@@ -193,25 +224,26 @@ document.addEventListener("DOMContentLoaded", function () {
     clicks++;
     $(background).show();
       $(dialogueTwo).html(object.myDialogueTwo[clicks]);
-
       if ($(dialogueTwo).html() == object.myDialogueTwo[35]) {
           $(allContent).show();
         $(contentTwo).hide();
         $(background).hide();
     }
     
-    if ($(dialogueTwo).html() == object.myDialogueTwo[3]) {
-    $('#bg').css('background-image', 'url("' + images.first +'")')  }
-  
+    $('#bg').css('background-image', 'url("' + images.set[clicks] + '")')
+    
+   /*  if ($(dialogueTwo).html() == object.myDialogueTwo[3]) {
+    $('#bg').css('background-image', 'url("' + images.set[1] +'")')  }
+   */
   }
 
   // if statement for when prompt is canceled(null) or user presses 'OK' without entering a name,
   if (name === null) {
-    object.myDialogue[indexTwo] = "I...don't have one.";
-    object.myDialogue[index] = "Wait I do have one. Ike that's my name.";
+   let replaceOne = object.myDialogue[indexTwo] = "I...don't have one.";
+   let replaceTwo = object.myDialogue[index] = "Wait, Ike that's my name.";
   } else if (name === "") {
     object.myDialogue[indexTwo] = "I...don't have one.";
-    object.myDialogue[index] = "Wait I do have one. Ike that's my name.";
+    object.myDialogue[index] = "Wait, Ike that's my name.";
   }
 
   console.log(object.myDialogueTwo);
