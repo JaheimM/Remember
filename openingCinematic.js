@@ -1,10 +1,13 @@
 document.addEventListener("DOMContentLoaded", function () {
     window.addEventListener("load", function () {
         const preloader = document.querySelector(".preloader");
-        preloader.classList.add("off");
+      preloader.classList.add("off");
+      
     });
 
-    const content = document.getElementById("content");
+  const content = document.getElementById("content");
+  $("#content").hide()
+ setTimeout(function () {$("#content").fadeIn(2 * 2000)}, 800)
     
      // Optional user input for name
   const name = window.prompt("Your name is: ");
@@ -12,6 +15,7 @@ document.addEventListener("DOMContentLoaded", function () {
   let userName = name + ".";
 
   const audio = {
+    ba: new Audio("Music/Erik Satie - Gnossienne No.1.mp3"),
     voicelines: [
       new Audio("Music/voicelines/Dialogue1.mp3"),
       new Audio("Music/voicelines/Dialogue2.mp3"),
@@ -28,8 +32,13 @@ document.addEventListener("DOMContentLoaded", function () {
       new Audio("Music/voicelines/Dialogue11.mp3"),
       new Audio("Music/voicelines/Dialogue12.mp3"),
     ],
+    Confirm: new Audio("Music/Confirmation-dialogue.mp3")
   }
 
+
+  audio.ba.play()
+    audio.ba.loop = true;
+ 
     const object = {
         myDialogue: [
             "When I dream I see the faces of people I don't remember.",
@@ -46,34 +55,47 @@ document.addEventListener("DOMContentLoaded", function () {
             "Any of you?",
             "...",
             "A local told me of a cave filled with a body of water. A nomad who lost his memories traveled there and drowned. The people thought he was dead but there the man was perfectly fine. 'I remember.' he said. Then he told them his true name, 'Lethe.'",
-            "I'm desperate for answers. If I first have to die to remember then so be it."
+        "I'm desperate for answers. If I first have to die to remember then so be it.",
+        "Click to continue",
+            "Click to continue"
         ],
     }
 
-    $(content).click(clicked);
+  
 
      // To splice/replace 5th value in array for if statement within function
-  const index = object.myDialogue.indexOf(userName);
-  const indexTwo = object.myDialogue.indexOf(object.myDialogue[4]);
+  const index = object.myDialogue.indexOf(object.myDialogue[6]);
+  const indexTwo = object.myDialogue.indexOf(object.myDialogue[7]);
 
   // states where to start in the array
   let clicks = -1;
     
     // function for changing the html text accordingly for each value in the array
-  function clicked() {
-    clicks++;
-    $(dialogue).html(object.myDialogue[clicks]);
-    audio.voicelines[clicks].play()
+  $(content).click(function clicked() {
+    audio.Confirm.play() 
+       clicks++;
     console.log(clicks)
+   
+    $(dialogue).html(object.myDialogue[clicks]);
+
+      if ($(dialogue).text() == object.myDialogue[14]) {
+        $(content).fadeOut(1 * 1000);
+        setTimeout(function () {
+          window.location = 'Index.html';
+          return false;
+        }, 1000);
+        
     }
-    
+  audio.voicelines[clicks].play()
+    });
+  
      // if statement for when prompt is canceled(null) or user presses 'OK' without entering a name,
   if (name === null) {
-   let replaceOne = object.myDialogue[indexTwo] = "I...don't have one.";
-   let replaceTwo = object.myDialogue[index] = "Wait, Ike that's my name.";
+   let replaceOne = object.myDialogue[index] = "I...don't have one.";
+   let replaceTwo = object.myDialogue[indexTwo] = "Wait, Ike that's my name.";
   } else if (name === "") {
-    object.myDialogue[indexTwo] = "I...don't have one.";
-    object.myDialogue[index] = "Wait, Ike that's my name.";
+    object.myDialogue[index] = "I...don't have one.";
+    object.myDialogue[indexTwo] = "Wait, Ike that's my name.";
   }
 
 
