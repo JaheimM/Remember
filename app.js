@@ -200,7 +200,6 @@ document.addEventListener("DOMContentLoaded", function () {
     console.log(clicks);
     $(background).show();
     $(dialogueTwo).html(dialogue.Two[clicks]);
-    /* audio.confirm.play()  */
     if ($(dialogueTwo).html() == dialogue.Two[34]) {
     clicks = 0;
     $(allContent).show();
