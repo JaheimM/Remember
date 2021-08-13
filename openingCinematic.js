@@ -83,7 +83,7 @@ document.addEventListener("DOMContentLoaded", function () {
       if ($(dialogue).text() == object.myDialogue[14]) {
         $(content).fadeOut(1 * 1000);
         setTimeout(function () {
-          window.location = 'Index.html';
+          window.location = 'maingame.html';
           return false;
         }, 1000);
         
