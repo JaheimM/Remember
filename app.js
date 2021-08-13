@@ -196,12 +196,11 @@ document.addEventListener("DOMContentLoaded", function () {
   // function for changing the html text accordingly for each value in the array
 
   function clicked() {
-    audio.Confirm.play() 
     clicks++;
     console.log(clicks);
     $(background).show();
     $(dialogueTwo).html(dialogue.Two[clicks]);
-    
+    /* audio.confirm.play()  */
     if ($(dialogueTwo).html() == dialogue.Two[34]) {
     clicks = 0;
     $(allContent).show();
