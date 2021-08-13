@@ -35,9 +35,11 @@ document.addEventListener("DOMContentLoaded", function () {
     Confirm: new Audio("Music/Confirmation-dialogue.mp3")
   }
 
-
-  audio.ba.play()
+  $(document).mousemove(function () {
+   audio.ba.play()
     audio.ba.loop = true;
+})
+ 
  
     const object = {
         myDialogue: [
