@@ -6,25 +6,34 @@ document.addEventListener("DOMContentLoaded", function () {
 
   const background = document.getElementById("bg");
 
-  $(background).hide()
+  $(background).hide();
 
   const allContent = document.getElementById("all-content");
 
   const images = {
     set: [
       "Images/What are you doing out here.png",
-    "Images/brooding perhaps.png",
-      // remove from images folder later "Images/I'm not one for the politicking.clip"
-    ]
-  }
-  
+      "Images/What are you doing out here.png",
+      "Images/brooding perhaps.png",
+      "Images/I'm not one for the politicking 2.png",
+      "Images/I'm not one for the politicking 2.png",
+      "Images/I'm surprised.png",
+      "Images/dotdotdot.png",
+      "Images/dotdotdot2.png",
+      "Images/is that so.png",
+      "images/I'm surprised 2.png"
+    ],
+  };
+
   const audio = {
     one: new Audio("Music/UnderwaterBubbleBy PE311303.mp3"),
     two: new Audio("Music/Muffled Rain 2.mp3"),
     three: new Audio("Music/UnderwaterSpaceLo loop.mp3"),
     four: new Audio("Music/mixkit-human-single-heart-beat-490.wav"),
     five: new Audio("Music/Voice lines (answer correct).mp3"),
-    six: new Audio("Music/confirm_style_2_echo_001.mp3")
+    six: new Audio("Music/confirm_style_2_echo_001.mp3"),
+    seven: new Audio("Music/cave themeb4.ogg"),
+    confirm: new Audio("Music/Confirmation-dialogue.mp3")
   };
 
   //Variables from different elements on document
@@ -38,29 +47,25 @@ document.addEventListener("DOMContentLoaded", function () {
   const backBtn = document.getElementById("back-btn");
   const love = document.getElementById("memory-love");
   const contentTwo = document.getElementById("content2");
-  const content = document.getElementById("content");
   const instructions = document.getElementById("instructions-screen");
-  const close = document.getElementById("close")
+  const close = document.getElementById("close");
 
   let instructionsOnScreen = true;
 
- $(close).click(() => {
-    $(instructions).hide()
-   instructionsOnScreen = false;
-   console.log(instructionsOnScreen)
- })
-  
+  $(close).click(() => {
+    $(instructions).hide();
+    instructionsOnScreen = false;
+    console.log(instructionsOnScreen);
+  });
+
   if (instructionsOnScreen == true) {
-    $(backBtn).hide()
+    $(backBtn).hide();
   } else {
-    $(backBtn).show()
+    $(backBtn).show();
   }
 
- 
- 
-
   $(help).click(() => {
-    $(instructions).show()
+    $(instructions).show();
   });
 
   //Adding functionality to mute button
@@ -76,11 +81,11 @@ document.addEventListener("DOMContentLoaded", function () {
     mute.classList.toggle("change");
   });
 
-
   optionOne.onmouseover = function () {
     audio.two.play();
     audio.two.loop = true;
     audio.three.muted = true;
+    audio.seven.muted = true;
   };
 
   optionOne.onmouseout = function () {
@@ -89,6 +94,7 @@ document.addEventListener("DOMContentLoaded", function () {
       audio.three.muted = true;
     } else {
       audio.three.muted = false;
+      audio.seven.muted = false;
     }
   };
 
@@ -127,41 +133,22 @@ document.addEventListener("DOMContentLoaded", function () {
       $(mainContent).fadeIn(2100);
       if ((test = true)) {
         audio.three.play();
-        audio.three.loop = true;
+        audio.three.onended = function () {
+          audio.seven.play();
+          audio.seven.onended = function () {
+            audio.three.play()
+          }
+        }
       }
     });
   });
 
   // attaching page elements to variable for dialogue
-  const dialogue = document.getElementById("dialogue");
   const dialogueTwo = document.getElementById("dialogue2");
 
-  // Optional user input for name
-  const name = window.prompt("Your name is: ");
-
-  let userName = name + ".";
-
   // Array that has values for dialogues on each user click
-  const object = {
-    myDialogue: [
-      "When I dream I see the faces of people I don't remember.",
-      "I feel a sudden sense of nostalgia I can't place. Making me feel guilty.",
-      "What is it that you want from me?",
-      "Everytime I sleep...they come to me like ghost.",
-      "Maybe I'm just going mad.",
-      "Maybe these people never existed in the first place and they were born of my loneliness?",
-      "That reminds me what is my name?",
-      "Right, how could I forget?",
-      `It's ${userName}.`,
-      "These people I don't recognize they always call out that name.",
-      "Why can't I remember you?",
-      "Any of you?",
-      "...",
-      "A local told me of a cave filled with a body of water. A nomad who lost his memories traveled there and drowned. The people thought he was dead but there the man was perfectly fine. 'I remember.' he said. Then he told them his true name, 'Lethe.'",
-      "I'm desperate for answers. If I first have to die to remember then so be it."
-    ],
-
-    myDialogueTwo: [
+  const dialogue = {
+    Two: [
       "And what is someone like you doing out here all by their lonesome.",
       "Uh...",
       "Brooding perhaps? Contemplating life choices?",
@@ -182,71 +169,57 @@ document.addEventListener("DOMContentLoaded", function () {
       "Yeah. Like reality is setting in and my father was right.",
       "Right about what?",
       "That I will be nothing but a failure.",
-      "Hmm, What a horrible thing to say to a child. I wonder, What  do you think separates failures from those who succeed?",
-      "What a strange question.",
+      "Hmm, What a horrible thing to say to a child. I wonder, What do you think separates failures from those who achieved success?",
+      "<em> What a strange question. </em>",
       "Uh...persistence?",
       "Right, one failure doesn’t mean you should throw in the towel. One failure doesn’t determine whether or not you will succeed. Of course those traits are necessary but you failed to mention the one thing that should be the most important above all.",
       "She reaches out her hand cupping my right cheek. The corner of her lips pulling into a gentle smile as her eyes open for the first time. A breath catches in my throat as she tilts her head.",
       "Faith. Faith is what you’re missing.",
-      "She’s blind.",
+      "<em> She’s blind. </em>",
       "“Faith in one’s self or faith in a greater being. Sometimes people forget that they need to have faith that they can succeed no matter the tribulations or trials.”",
       "Something warm bubbled up in my chest and slowly began to rise to my head. I was sure my face was red. Beauty and wisdom. I am sure this woman is someone who went through hell because of having no eyesight. If she was born with it or not doesn’t matter. Her words hold weight.",
       "Faith in myself.",
       "With a chuckle she runs a finger down my jaw. It's a good thing she can't see how red my face is.",
       "On another note You're very cute...",
       "Huh?",
-        "For a man.",
-        "Click to return",
-      ""
-      ],
-      images: [
-    ]
+      "For a man.",
+      "Click to return",
+    ],
   };
 
   // Event listener for if the next button for dialogue is clicked
-  $(content).click(clicked);
-  $(contentTwo).click(clickedTwo);
-
-  // To splice/replace 5th value in array for if statement within function
-  const index = object.myDialogue.indexOf(userName);
-  const indexTwo = object.myDialogue.indexOf(object.myDialogue[4]);
+  $(contentTwo).click(clicked);
 
   // states where to start in the array
   let clicks = -1;
 
   // function for changing the html text accordingly for each value in the array
+
   function clicked() {
+    audio.Confirm.play() 
     clicks++;
-   $(dialogue).html(object.myDialogue[clicks]);
+    console.log(clicks);
+    $(background).show();
+    $(dialogueTwo).html(dialogue.Two[clicks]);
+    
+    if ($(dialogueTwo).html() == dialogue.Two[34]) {
+    clicks = 0;
+    $(allContent).show();
+    $(contentTwo).hide();
+    $(background).hide();
+    $(dialogueTwo).html(dialogue.Two[0]);
+    $(dialogueTwo).html(dialogue.Two[clicks]);
   }
 
-  function clickedTwo() {
-    clicks++;
-    $(background).show();
-      $(dialogueTwo).html(object.myDialogueTwo[clicks]);
-      if ($(dialogueTwo).html() == object.myDialogueTwo[35]) {
-          $(allContent).show();
-        $(contentTwo).hide();
-        $(background).hide();
-    }
-    
     $('#bg').css('background-image', 'url("' + images.set[clicks] + '")')
-    
-   /*  if ($(dialogueTwo).html() == object.myDialogueTwo[3]) {
+
+    /*  if ($(dialogueTwo).html() == object.myDialogueTwo[3]) {
     $('#bg').css('background-image', 'url("' + images.set[1] +'")')  }
    */
   }
 
-  // if statement for when prompt is canceled(null) or user presses 'OK' without entering a name,
-  if (name === null) {
-   let replaceOne = object.myDialogue[indexTwo] = "I...don't have one.";
-   let replaceTwo = object.myDialogue[index] = "Wait, Ike that's my name.";
-  } else if (name === "") {
-    object.myDialogue[indexTwo] = "I...don't have one.";
-    object.myDialogue[index] = "Wait, Ike that's my name.";
-  }
-
-  console.log(object.myDialogueTwo);
+ 
+  console.log(dialogue.Two);
 
   //jquery
   // carousel functionality
@@ -320,6 +293,7 @@ document.addEventListener("DOMContentLoaded", function () {
         $("#form").show();
       };
     }
+
     if (faith == false) {
       return "yes";
     } else if (faith == true) {

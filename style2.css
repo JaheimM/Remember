@@ -50,7 +50,6 @@ display: none;
 .content2 {
     display: flex;
     justify-content: space-between;
-    text-wrap: wrap;
     flex-wrap: wrap;
     border: 10px white solid;
     border-radius: 10px;
@@ -61,8 +60,7 @@ display: none;
     z-index: 1;
 }
 
-.content2 {
-    display: none;
+.content {
     position: absolute;
     bottom: 0;
 }
